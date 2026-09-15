@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresas | Soluciones para crecer</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Cámara de Comercio de Casanare</h1>
+
+        <p>
+            Organización que apoya el desarrollo empresarial y comercial del departamento de Casanare.
+        </p>
+    </header>
+
+    <nav aria-label="Menú principal">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="empresas.html">Empresas</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+
+
+    <form action="registro.php" method="post">
+
+        <fieldset>
+            <legend>Datos del tramite</legend>
+
+            <p>
+                <label for="ccomercio">Camara de Comercio jurisdiccional</label>
+                <select id="ccomercio" name="ccomercio" required>
+                    <option value="">Seleccione una jurisdicción</option>
+                    <option value="cc1">Bogota</option>
+                    <option value="cc2">Medellin</option>
+                    <option value="cc3">Cali</option>
+                    <option value="cc4">Barranquilla</option>
+                    <option value="cc5">Casanare</option>
+                    <option value="cc6">Cartagena</option>
+                    <option value="cc7">Otra</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="tipotra">Tipo de Trámite Principal</label>
+                <select id="tipotra" name="tipotra" required>
+                    <option value="">Seleccione tipo de tramite</option>
+                    <option value="tip1">Matricula inicial</option>
+                    <option value="tip2">Renovación anual</option>
+                    <option value="tip3">Modificación</option>
+                    <option value="tip4">cancelacion</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="naturalezaregi">Naturaleza del Registro</label>
+                <select id="naturalezaregi" name="naturalezaregi" required>
+                    <option value="">Seleccione la naturaleza</option>
+                    <option value="n1">Registro mercantil</option>
+                    <option value="n2">Registro entidades sin animo de lucro</option>
+                    <option value="n3">Registro de proponentes</option>
+                    <option value="n4">Registro de economia solidaria</option>
+                </select>
+            </p>
+
+        </fieldset>
+
+        <fieldset>
+
+            <legend>Naturaleza Jurídica del Solicitante</legend>
+            <div class="form-group">
+                <div class="radio-group">
+                    <label><input type="radio" name="tipoPersona" value="natural" required>Persona Natural (Comerciante individual)</label>
+                    <label><input type="radio" name="tipoPersona" value="juridica">Persona Jurídica (Empresa / Sociedad / ESAL)</label></div>
+            </div>
+
+            <div class="form-group" id="organizacionJuridica" style="display: none;">
+                <label for="organizacion">Organización Jurídica (Si seleccionó Persona Jurídica)</label>
+                <select id="organizacion" name="organizacion">
+                    <option value="">Seleccione una opción</option>
+                    <option value="sas">Sociedad por Acciones Simplificada (S.A.S.)</option>
+                    <option value="ltda">Sociedad de Responsabilidad Limitada (Ltda.)</option>
+                    <option value="sa">Sociedad Anónima (S.A.)</option>
+                    <option value="eu">Empresa Unipersonal (E.U.)</option>
+                    <option value="comandita">Sociedad Comandita Simple / por Acciones</option>
+                    <option value="esal">Fundación / Asociación / Corporación (ESAL)</option>
+                    <option value="sucursal">Sucursal de Sociedad Extranjera</option>
+                </select>
+            </div>
+
+
+            <script>
+                const radios = document.querySelectorAll('input[name="tipoPersona"]');
+                const organizacionDiv = document.getElementById('organizacionJuridica');
+                const organizacion = document.getElementById('organizacion');
+                radios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'juridica') {
+                            organizacionDiv.style.display = 'block';
+                            organizacion.required = true;
+
+                        } else {
+                            organizacionDiv.style.display = 'none';
+                            organizacion.required = false;
+                            organizacion.value = "";
+                        }
+                    });
+                });
+            </script>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Datos del Solicitante</legend>
+
+            <p>
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </p>
+
+            <p>
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" name="correo" required>
+            </p>
+
+            <p>
+                <label for="tipoDocumento">Tipo de Documento de Identidad</label>
+                <select id="tipoDocumento" name="tipoDocumento" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="cc">Cédula de Ciudadanía (CC)</option>
+                    <option value="ce">Cédula de Extranjería (CE)</option>
+                    <option value="nit">Número de Identificación Tributaria (NIT)</option>
+                    <option value="pasaporte">Pasaporte</option>
+                    <option value="ppt">Permiso de Protección Temporal (PPT)</option>
+                </select>
+
+            </p>
+
+
+            <p>
+                <label for="numeroDocumento">Número de Documento de Identidad</label>
+                <input type="text" id="numeroDocumento" name="numeroDocumento" required>
+            </p>
+
+
+            <p>
+                <label>¿Cuenta con NIT asignado por la DIAN?</label>
+                <label><input type="radio" name="tieneNit" value="si" required>Sí</label>
+
+                <label><input type="radio" name="tieneNit" value="no">No (Solicitará asignación inicial vía Pre-RUT en el trámite)</label>
+            </p>
+
+
+            <p>
+                <label for="estadoCivil">Estado Civil (Aplica para Persona Natural)</label>
+                <select id="estadoCivil" name="estadoCivil">
+                    <option value="">Seleccione una opción</option>
+                    <option value="soltero">Soltero(a)</option>
+                    <option value="casado">Casado(a)</option>
+                    <option value="union_libre">Unión Libre</option>
+                    <option value="divorciado">Divorciado(a) / Separado(a)</option>
+                    <option value="viudo">Viudo(a)</option>
+                </select>
+            </p>
+
+            <p>
+                <label>Género (Para fines estadísticos y caracterización)</label>
+                <label><input type="radio" name="genero" value="femenino" required>Femenino</label>
+                <label><input type="radio" name="genero" value="masculino">Masculino</label>
+                <label><input type="radio" name="genero" value="no_binario">No binario / Otro</label>
+                <label><input type="radio" name="genero" value="prefiero_no_decir">Prefiero no decir</label>
+            </p>
+
+        </fieldset>
+
+
+        <p>
+            <input type="submit" value="enviar">
+        </p>
+
+    </form>
+
+</body>
+
+</html>

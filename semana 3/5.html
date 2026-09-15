@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganaderia La Aurora - Yopal</title>
+</head>
+
+<body>
+
+    <form id="pesaje" novalidate>
+        <fieldset>
+            <legend>Pesaje de novillo</legend>
+
+            <label for="pesoInicial">Peso Inicial (kg)</label>
+            <input id="pesoInicial" name="peso-inicial" type="number"
+                   min="120" max="700" step="0.5">
+
+            <label for="pesoActual">Peso Actual (kg)</label>
+            <input id="pesoActual" name="peso-actual" type="number"
+                   min="400" max="700" step="0.5">
+
+            <label for="dias">Dias</label>
+            <input id="dias" name="dias" type="number"
+                   min="1" max="365" step="1" required>
+
+            <button type="submit">Calcular</button>
+
+        </fieldset>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        const PESO_VENTA = 480; // kg objetivo
+
+// Ganancia diaria de peso en kg/día
+function gdp(pesoInicial, pesoActual, dias) {
+    if (dias <= 0) throw new Error("Días inválidos");
+    return (pesoActual - pesoInicial) / dias;
+}
+
+// Días faltantes al peso objetivo
+function dpv(pesoActual, gananciaDiaria) {
+    if (gananciaDiaria <= 0) return Infinity;
+    return Math.ceil((PESO_VENTA - pesoActual) / gananciaDiaria);
+}
+
+const formulario = document.getElementById("pesaje");
+const salida = document.getElementById("resultado");
+
+formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault(); // evita que se recargue la página
+
+    // Se lee .value y se convierte a número: sin esto serían elementos 
+    const lote = {
+        inicial: Number(document.getElementById("pesoInicial").value),
+        actual: Number(document.getElementById("pesoActual").value),
+        dias: Number(document.getElementById("dias").value)
+    };
+
+    const g = gdp(lote.inicial, lote.actual, lote.dias);
+    const faltantes = dpv(lote.actual, g);
+
+    console.log(g.toFixed(3)); // kg/día
+    console.log(faltantes);    // días
+
+    salida.textContent = faltantes === Infinity
+    ? `Ganancia diaria: ${g.toFixed(3)} kg/día - el novillo no está subiendo de peso.`
+    : `Ganancia diaria: \({g.toFixed(3)} kg/día - faltan\){faltantes} días para los ${PESO_VENTA} kg.`;
+});
+    </script>
+
+</body>
+
+</html>
