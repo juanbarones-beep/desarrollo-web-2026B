@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cámara de Comercio de Casanare</title>
+
+    <style>
+        article {
+    background-color: #ecfffa;
+    margin: 15px 0;
+    padding: 20px;
+    border-left: 5px solid #00695c;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+    </style>
 </head>
 
 <body>
@@ -39,6 +50,10 @@
                 </figcaption>
             </figure>
 
+                <video controls poster="1.png" width="500">
+                    <source src="12.mp4" type="video/mp4">
+                    <track src="subtitulos.vtt" kind="captions" srclang="es" label="Español">       
+                </video>
             <p>
                 La Cámara de Comercio de Casanare trabaja para apoyar a los empresarios y comerciantes del departamento. También busca fortalecer el crecimiento de las empresas y contribuir al desarrollo económico de la región.
             </p>
@@ -143,19 +158,47 @@
             <p>
                 <a href="contacto.html">Ver página de contacto</a>
             </p>
+            
+            <h2>contactenos</h2>
+            <form id="contactenos" novalidate>
+        <fieldset>
+            <legend>ingrese su información</legend>
 
+            <label for="correo">Correo electronico</label>
+            <input id="correo" name="correo" type="text" placeholder="correo@gmail.com">
+
+            <label for="nombre">Nombre del referente</label>
+            <input id="nombre" name="nombre" type="text"
+                placeholder="juanito perez">
+            
+            <button type="submit">Guardar pesaje</button>
+            
+        </fieldset>
+        <p>Total de personas registradas: <span id="contador">0</span></p>
+
+    </form>
+    <script>
+  let totalRegistrados = 0;
+
+  const formulario = document.getElementById("contactenos");
+  const contadorElemento = document.getElementById("contador");
+  formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault(); 
+
+    totalRegistrados++;
+
+    contadorElemento.textContent = totalRegistrados;
+  });
+</script>
         </section>
 
     </main>
 
     <footer>
 
+        <h1>Estudiantes</h1>
         <p>
-            Página educativa realizada para el taller "El Encargo".
-        </p>
-
-        <p>
-            Estudiante de Unitrópico - Casanare
+            Juan Camilo Baron Bohorquez<br>David Fernando Aldana Flores
         </p>
 
     </footer>
