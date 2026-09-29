@@ -8,6 +8,7 @@
 
     <style>
         article {
+<<<<<<< HEAD
             background-color: #ecfffa;
             margin: 15px 0;
             padding: 20px;
@@ -15,6 +16,15 @@
             border-radius: 5px;
             font-family: Arial, Helvetica, sans-serif;
         }
+=======
+    background-color: #ecfffa;
+    margin: 15px 0;
+    padding: 20px;
+    border-left: 5px solid #00695c;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+>>>>>>> 13b2c2c5b256002a18f86a23cd0ba8c4d0f37cae
     </style>
 </head>
 
@@ -50,7 +60,11 @@
                 </figcaption>
             </figure>
 
+<<<<<<< HEAD
             <video controls poster="1.png" width="500">
+=======
+                <video controls poster="1.png" width="500">
+>>>>>>> 13b2c2c5b256002a18f86a23cd0ba8c4d0f37cae
                     <source src="12.mp4" type="video/mp4">
                     <track src="subtitulos.vtt" kind="captions" srclang="es" label="Español">       
                 </video>
@@ -158,7 +172,13 @@
             <p>
                 <a href="contacto.html">Ver página de contacto</a>
             </p>
+            
+            <h2>contactenos</h2>
+            <form id="contactenos" novalidate>
+        <fieldset>
+            <legend>ingrese su información</legend>
 
+<<<<<<< HEAD
             <h2>contactenos</h2>
             <form id="contactenos" novalidate>
                 <fieldset>
@@ -189,6 +209,34 @@
                     contadorElemento.textContent = totalRegistrados;
                 });
             </script>
+=======
+            <label for="correo">Correo electronico</label>
+            <input id="correo" name="correo" type="text" placeholder="correo@gmail.com">
+
+            <label for="nombre">Nombre del referente</label>
+            <input id="nombre" name="nombre" type="text"
+                placeholder="juanito perez">
+            
+            <button type="submit">Guardar pesaje</button>
+            
+        </fieldset>
+        <p>Total de personas registradas: <span id="contador">0</span></p>
+
+    </form>
+    <script>
+  let totalRegistrados = 0;
+
+  const formulario = document.getElementById("contactenos");
+  const contadorElemento = document.getElementById("contador");
+  formulario.addEventListener("submit", (evento) => {
+    evento.preventDefault(); 
+
+    totalRegistrados++;
+
+    contadorElemento.textContent = totalRegistrados;
+  });
+</script>
+>>>>>>> 13b2c2c5b256002a18f86a23cd0ba8c4d0f37cae
         </section>
 
     </main>
