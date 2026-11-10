@@ -1,0 +1,97 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    header,
+    footer {
+        padding: 2rem 1.5rem;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    main {
+        padding: 1.5rem;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        gap: .5rem 1rem;
+    }
+    th,
+    td {
+        padding: .75rem;
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        scroll-padding-top: 1rem;
+    }
+    header,
+    footer {
+        padding: 1.5rem 1rem;
+    }
+    header h1 {
+        font-size: 1.6rem;
+        line-height: 1.25;
+    }
+    nav {
+        position: static;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: .25rem;
+        padding: .75rem;
+        text-align: center;
+    }
+    main {
+        padding: 1rem;
+    }
+    section {
+        margin-bottom: 2rem;
+    }
+    section h2 {
+        font-size: 1.3rem;
+        padding-left: .65rem;
+    }
+    article,
+    aside,
+    form,
+    fieldset {
+        padding: 1rem;
+    }
+    ul,
+    ol {
+        padding-left: 1.35rem;
+    }
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+    th,
+    td {
+        min-width: 105px;
+        padding: .6rem;
+        font-size: .9rem;
+    }
+    button,
+    input[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    * {
+        transition: none !important;
+    }
+}
